@@ -32,7 +32,6 @@ export class ItemFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.item.id) {
-      console.log("editar")
       this.itemService.updateItem(this.item.id, this.item).subscribe(() => {
         alert('Salvo com sucesso!');
         this.router.navigate(['/itens']);
