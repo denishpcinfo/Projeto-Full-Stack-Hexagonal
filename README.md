@@ -26,7 +26,7 @@ Estrutura do Projeto:
 <br>
 /src: Contém o código-fonte da aplicação Spring Boot.
 <br>
-/src/main/resources: Contém arquivos de configuração, incluindo application.properties para configurações do Spring.
+/src/main/resources: Contém arquivos de configuração, incluindo application.yml para configurações do Spring.
 <br>
 /src/test/java: Contém os testes unitários da aplicação.
 <br>
