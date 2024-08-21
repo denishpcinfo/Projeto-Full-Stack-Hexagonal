@@ -1,0 +1,13 @@
+com/d3n15/back_hexagonal/infraestrutura/configuracao/BeanConfiguracao.class
+com/d3n15/back_hexagonal/dominio/dtos/QuantidadeDTO.class
+com/d3n15/back_hexagonal/dominio/Item.class
+com/d3n15/back_hexagonal/dominio/adaptadores/services/PedidoServiceImp.class
+com/d3n15/back_hexagonal/aplicacao/adaptadores/controllers/ItemController.class
+com/d3n15/back_hexagonal/dominio/portas/interfaces/ItemServicePort.class
+com/d3n15/back_hexagonal/infraestrutura/adaptadores/entidades/ItemEntity.class
+com/d3n15/back_hexagonal/infraestrutura/adaptadores/repositories/ItemPortRepository.class
+com/d3n15/back_hexagonal/infraestrutura/configuracao/CorsConfig.class
+com/d3n15/back_hexagonal/dominio/portas/repositories/ItemRepositoryPort.class
+com/d3n15/back_hexagonal/dominio/dtos/ItemDTO.class
+com/d3n15/back_hexagonal/BackHexagonalApplication.class
+com/d3n15/back_hexagonal/infraestrutura/adaptadores/repositories/ItemRepository.class

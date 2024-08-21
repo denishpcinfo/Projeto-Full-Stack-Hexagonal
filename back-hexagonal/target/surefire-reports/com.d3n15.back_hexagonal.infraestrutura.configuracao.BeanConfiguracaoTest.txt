@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.d3n15.back_hexagonal.infraestrutura.configuracao.BeanConfiguracaoTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.340 s -- in com.d3n15.back_hexagonal.infraestrutura.configuracao.BeanConfiguracaoTest

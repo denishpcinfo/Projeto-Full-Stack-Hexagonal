@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 2.253 s <<< FAILURE! -- in com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest
+com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.salvarDeveChamarOMetodoSalvar -- Time elapsed: 0.010 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemPortRepository.save(Object)" because "this.itemPortRepository" is null
+	at com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemRepository.salvar(ItemRepository.java:49)
+	at com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.salvarDeveChamarOMetodoSalvar(ItemRepositoryPortTest.java:47)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.buscarPeloIdDeveRetornarItemCorreto -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemPortRepository.findById(java.lang.Long)" because "this.itemPortRepository" is null
+	at com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemRepository.buscarPeloId(ItemRepository.java:30)
+	at com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.buscarPeloIdDeveRetornarItemCorreto(ItemRepositoryPortTest.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.deleteByIdDeveChamarOMetodoDeleteById -- Time elapsed: 0.007 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemPortRepository.findById(java.lang.Long)" because "this.itemPortRepository" is null
+	at com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemRepository.deleteById(ItemRepository.java:54)
+	at com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.deleteByIdDeveChamarOMetodoDeleteById(ItemRepositoryPortTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.buscarTodosDeveRetornarListaDeItens -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemPortRepository.findAll()" because "this.itemPortRepository" is null
+	at com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories.ItemRepository.buscarTodos(ItemRepository.java:24)
+	at com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPortTest.buscarTodosDeveRetornarListaDeItens(ItemRepositoryPortTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

@@ -1,0 +1,10 @@
+com/d3n15/back_hexagonal/BackHexagonalApplicationTest.class
+com/d3n15/back_hexagonal/infraestrutura/configuracao/BeanConfiguracaoTest.class
+com/d3n15/back_hexagonal/dominio/adaptadores/services/PedidoServiceImpTest.class
+com/d3n15/back_hexagonal/infraestrutura/configuracao/BeanConfiguracaoTest$TestConfig.class
+com/d3n15/back_hexagonal/dominio/dtos/ItemDTOTest.class
+com/d3n15/back_hexagonal/infraestrutura/adaptadores/entidades/ItemEntityTest.class
+com/d3n15/back_hexagonal/infraestrutura/adaptadores/repositories/ItemRepositoryTest.class
+com/d3n15/back_hexagonal/aplicacao/adaptadores/controllers/ItemControllerTest.class
+com/d3n15/back_hexagonal/dominio/dtos/QuantidadeDTOTest.class
+com/d3n15/back_hexagonal/dominio/portas/interfaces/ItemServicePortTest.class

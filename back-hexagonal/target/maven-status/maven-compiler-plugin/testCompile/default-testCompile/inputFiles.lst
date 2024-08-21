@@ -1,0 +1,9 @@
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/BackHexagonalApplicationTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/aplicacao/adaptadores/controllers/ItemControllerTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/dominio/adaptadores/services/PedidoServiceImpTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/dominio/dtos/ItemDTOTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/dominio/dtos/QuantidadeDTOTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/dominio/portas/interfaces/ItemServicePortTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/infraestrutura/adaptadores/entidades/ItemEntityTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/infraestrutura/adaptadores/repositories/ItemRepositoryTest.java
+/home/d1/Downloads/git/Projeto-Full-Stack-Hexagonal/Projeto-Full-Stack-Hexagonal/back-hexagonal/src/test/java/com/d3n15/back_hexagonal/infraestrutura/configuracao/BeanConfiguracaoTest.java
