@@ -1,0 +1,33 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Valor Total</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{ item.id }}</td>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.valorTotal }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" (click)="editItem(item)">
+                    Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<nav>
+    <a class="button" routerLink="/itens/novo" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Criar
+        Item</a>
+</nav>

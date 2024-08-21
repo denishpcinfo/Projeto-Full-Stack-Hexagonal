@@ -1,0 +1,26 @@
+<form #itemForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" class="form-control" name="nome" [(ngModel)]="item.nome" required />
+  </div>
+
+  <div class="form-group">
+    <label for="valorTotal">Valor Total</label>
+    <input type="number" id="valorTotal" class="form-control" name="valorTotal" [(ngModel)]="item.valorTotal"
+      required />
+  </div>
+
+  <div class="form-group">
+    <label for="quantidade">Quantidade</label>
+    <input type="number" id="quantidade" class="form-control" name="quantidade" [(ngModel)]="item.quantidade"
+      required />
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="itemForm.invalid">
+    Salvar
+  </button>
+</form>
+
+<nav>
+  <a class="button" routerLink="/itens" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Voltar</a>
+</nav>
