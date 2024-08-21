@@ -11,8 +11,8 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.apiUrl);
+  getItens(params: any): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/todos-itens', { params });
   }
 
   getItem(id: number): Observable<Item> {

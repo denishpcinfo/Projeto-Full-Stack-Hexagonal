@@ -6,10 +6,13 @@ import com.d3n15.back_hexagonal.dominio.portas.interfaces.ItemServicePort;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.HttpStatus.OK;
@@ -32,11 +35,15 @@ public class ItemControllerTest {
     }
 
     @Test
-    void getItemDeveRetornarListaDeItens() {
-        List<ItemDTO> itensMock = Arrays.asList(new ItemDTO(1L,"Produto A", null, 1.0), new ItemDTO(2L,"Produto B", null, 2.0));
-        when(itemServicePort.buscarItens()).thenReturn(itensMock);
-        List<ItemDTO> result = itemController.getItem();
-        assertEquals(itensMock, result);
+    void testGetItens() {
+        Map<String, Object> mockResponse = new HashMap<>();
+        mockResponse.put("data", "some data");
+        when(itemServicePort.buscarItens(0, 10)).thenReturn(mockResponse);
+        ResponseEntity<Map<String, Object>> response = itemController.getItens(0, 10);
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(mockResponse, response.getBody());
+        verify(itemServicePort, times(1)).buscarItens(0, 10);
     }
 
     @Test
@@ -44,7 +51,7 @@ public class ItemControllerTest {
         Long id = 1L;
         ItemDTO itemMock = new ItemDTO(1L,"Produto A", null, 1.0);
         when(itemServicePort.buscarItem(id)).thenReturn(itemMock);
-        ItemDTO result = itemController.getItens(id);
+        ItemDTO result = itemController.getItem(id);
         assertEquals(itemMock, result);
     }
 

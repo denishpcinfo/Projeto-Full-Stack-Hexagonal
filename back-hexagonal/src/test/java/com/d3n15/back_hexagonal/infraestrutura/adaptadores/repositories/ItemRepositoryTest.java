@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,13 +29,22 @@ public class ItemRepositoryTest {
 
     @Test
     void testBuscarTodos() {
+        Pageable pageable = PageRequest.of(0, 10);
         ItemEntity itemEntity1 = new ItemEntity();
+        itemEntity1.setId(1L);
+        itemEntity1.setNome("Item 1");
         ItemEntity itemEntity2 = new ItemEntity();
-        List<ItemEntity> itemEntitiesMock = Arrays.asList(itemEntity1, itemEntity2);
-        when(itemPortRepository.findAll()).thenReturn(itemEntitiesMock);
-        List<Item> result = itemRepository.buscarTodos();
-        assertEquals(2, result.size());
-        verify(itemPortRepository, times(1)).findAll();
+        itemEntity2.setId(2L);
+        itemEntity2.setNome("Item 2");
+        List<ItemEntity> itemEntities = Arrays.asList(itemEntity1, itemEntity2);
+        Page<ItemEntity> itemEntityPage = new PageImpl<>(itemEntities);
+        when(itemPortRepository.findAll(pageable)).thenReturn(itemEntityPage);
+        Page<Item> itemsPage = itemRepository.buscarTodos(pageable);
+        assertNotNull(itemsPage);
+        assertEquals(2, itemsPage.getTotalElements());
+        assertEquals("Item 1", itemsPage.getContent().get(0).getNome());
+        assertEquals("Item 2", itemsPage.getContent().get(1).getNome());
+        verify(itemPortRepository, times(1)).findAll(pageable);
     }
 
     @Test

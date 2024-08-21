@@ -5,10 +5,14 @@ import com.d3n15.back_hexagonal.dominio.dtos.QuantidadeDTO;
 import com.d3n15.back_hexagonal.dominio.dtos.ItemDTO;
 import com.d3n15.back_hexagonal.dominio.portas.interfaces.ItemServicePort;
 import com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Sort;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PedidoServiceImp implements ItemServicePort {
 
@@ -33,10 +37,17 @@ public class PedidoServiceImp implements ItemServicePort {
     }
 
     @Override
-    public List<ItemDTO> buscarItens() {
-        List<Item> items = this.itemRepository.buscarTodos();
-        List<ItemDTO> itemDTOS = items.stream().map(Item::paraItemDTO).collect(Collectors.toList());
-        return itemDTOS;
+    public Map<String, Object> buscarItens(int page, int size) {
+        Map<String, Object> response = new HashMap<>();
+        Page<Item> items = null;
+        Pageable paging = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+        items = this.itemRepository.buscarTodos(paging);
+        Page<ItemDTO> itemDTOS = items.map(Item::paraItemDTO);
+        response.put("allItens", itemDTOS);
+        response.put("currentPage", itemDTOS.getNumber());
+        response.put("totalItens", itemDTOS.getTotalElements());
+        response.put("totalPages", itemDTOS.getTotalPages());
+        return response;
     }
 
     @Override

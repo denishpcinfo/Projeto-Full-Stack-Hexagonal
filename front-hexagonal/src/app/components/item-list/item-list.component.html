@@ -1,24 +1,34 @@
+
+<div class="card-header">
+    <h1><strong>Lista de Itens</strong></h1>
+</div>
+
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Valor Total</th>
-            <th>Quantidade</th>
-            <th>Ações</th>
+            <th class="align-text-itens">ID</th>
+            <th class="align-text-itens">Nome</th>
+            <th class="align-text-itens">Valor Total</th>
+            <th class="align-text-itens">Quantidade</th>
+            <th class="align-text-itens">Ações</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items">
-            <td>{{ item.id }}</td>
-            <td>{{ item.nome }}</td>
-            <td>{{ item.valorTotal }}</td>
-            <td>{{ item.quantidade }}</td>
-            <td>
+        <tr *ngFor="let item of itens | paginate : {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+            };
+            let i = index">
+            <td class="align-text-itens">{{ item.id }}</td>
+            <td class="align-text-itens">{{ item.nome }}</td>
+            <td class="align-text-itens">{{ item.valorTotal }}</td>
+            <td class="align-text-itens">{{ item.quantidade }}</td>
+            <td class="align-text-itens">
                 <button class="btn btn-primary btn-sm" (click)="editItem(item)">
                     Editar
                 </button>
-                <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">
+                <button class="btn btn-danger btn-sm margin-excluir" (click)="deleteItem(item)">
                     Excluir
                 </button>
             </td>
@@ -26,7 +36,21 @@
     </tbody>
 </table>
 
-
+<br>
+<div class="align-center">
+    <p><strong>Total:</strong> {{ count }} </p>
+    <div class="d-flex justify-content-center p-2">
+        <div class="col-md-12">
+            <pagination-controls
+            previousLabel=""
+            nextLabel=""
+            [responsive]="true"
+            (pageChange)="handlePageChange($event)"
+            ></pagination-controls>
+          </div>
+    </div>
+</div>
+<br>
 <nav>
     <a class="button" routerLink="/itens/novo" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Criar
         Item</a>

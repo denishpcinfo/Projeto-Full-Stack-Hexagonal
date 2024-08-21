@@ -3,12 +3,12 @@ package com.d3n15.back_hexagonal.infraestrutura.adaptadores.repositories;
 import com.d3n15.back_hexagonal.dominio.Item;
 import com.d3n15.back_hexagonal.dominio.portas.repositories.ItemRepositoryPort;
 import com.d3n15.back_hexagonal.infraestrutura.adaptadores.entidades.ItemEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class ItemRepository implements ItemRepositoryPort {
@@ -20,9 +20,9 @@ public class ItemRepository implements ItemRepositoryPort {
     }
 
     @Override
-    public List<Item> buscarTodos() {
-        List<ItemEntity> itemEntities = this.itemPortRepository.findAll();
-        return itemEntities.stream().map(ItemEntity::paraItemEntity).collect(Collectors.toList());
+    public Page<Item> buscarTodos(Pageable pageable) {
+        Page<ItemEntity> itemEntities = this.itemPortRepository.findAll(pageable);
+        return itemEntities.map(ItemEntity::paraItemEntity);
     }
 
     @Override

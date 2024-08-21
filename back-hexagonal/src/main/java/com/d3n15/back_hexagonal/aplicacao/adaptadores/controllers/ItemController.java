@@ -3,13 +3,14 @@ package com.d3n15.back_hexagonal.aplicacao.adaptadores.controllers;
 import com.d3n15.back_hexagonal.dominio.dtos.QuantidadeDTO;
 import com.d3n15.back_hexagonal.dominio.dtos.ItemDTO;
 import com.d3n15.back_hexagonal.dominio.portas.interfaces.ItemServicePort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/itens")
@@ -27,13 +28,15 @@ public class ItemController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
-    List<ItemDTO> getItem() {
-        return itemServicePort.buscarItens();
+    @GetMapping("/todos-itens")
+    ResponseEntity<Map<String, Object>> getItens(
+            @RequestParam(name = "page", required = false) int page,
+            @RequestParam("size") int size) {
+    return new ResponseEntity<>(itemServicePort.buscarItens(page, size), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    ItemDTO getItens(@PathVariable Long id){
+    ItemDTO getItem(@PathVariable Long id){
         return itemServicePort.buscarItem(id);
     }
 

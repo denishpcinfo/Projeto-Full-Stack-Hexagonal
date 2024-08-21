@@ -1,10 +1,12 @@
 package com.d3n15.back_hexagonal.dominio.portas.repositories;
 
 import com.d3n15.back_hexagonal.dominio.Item;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ItemRepositoryPort {
-    List<Item> buscarTodos();
+
+    Page<Item> buscarTodos(Pageable pageable);
 
     Item buscarPeloId(Long id);
 

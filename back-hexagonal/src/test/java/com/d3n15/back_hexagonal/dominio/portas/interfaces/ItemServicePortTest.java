@@ -8,15 +8,14 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootTest
 class ItemServicePortTest {
@@ -29,24 +28,6 @@ class ItemServicePortTest {
 
     @MockBean
     private ItemPortRepository itemPortRepository;
-
-    @Test
-    void buscarItensDeveRetornarListaDeItemDTOs() {
-        List<ItemDTO> itensMock = Arrays.asList(new ItemDTO(1L,"Item 1", null, 1.0), new ItemDTO(2L,"Item 2", null, 2.0));
-        when(itemServicePort.buscarItens()).thenReturn(itensMock);
-        List<ItemDTO> result = itemServicePort.buscarItens();
-        assertEquals(itensMock, result);
-    }
-
-    @Test
-    void buscarItensDeveRetornarListaDeItensDTO() {
-        ItemDTO item1 = new ItemDTO(1L, "Produto A", new BigDecimal("100.00"), 2.0);
-        ItemDTO item2 = new ItemDTO(2L, "Produto B", new BigDecimal("200.00"), 3.0);
-        List<ItemDTO> itemsMock = Arrays.asList(item1, item2);
-        when(itemServicePort.buscarItens()).thenReturn(itemsMock);
-        List<ItemDTO> result = itemServicePort.buscarItens();
-        assertEquals(itemsMock, result);
-    }
 
     @Test
     void criarItemDeveChamarOMetodoCriarItem() {
@@ -70,4 +51,42 @@ class ItemServicePortTest {
         itemServicePort.deleteById(id);
         verify(itemServicePort, times(1)).deleteById(id);
     }
+
+    @Test
+    void testBuscarItens() {
+        Map<String, Object> mockResponse = new HashMap<>();
+        mockResponse.put("data", "some data");
+        when(itemServicePort.buscarItens(0, 10)).thenReturn(mockResponse);
+        Map<String, Object> result = itemServicePort.buscarItens(0, 10);
+        assertNotNull(result);
+        assertEquals(mockResponse, result);
+    }
+
+    @Test
+    void testCriarItem() {
+        ItemDTO itemDTO = new ItemDTO(1L,"Item 1", null, 1.0);
+        ResponseEntity<Object> expectedResponse = new ResponseEntity<>("Item criado com sucesso", HttpStatus.CREATED);
+        when(itemServicePort.criarItem(itemDTO)).thenReturn(expectedResponse);
+        ResponseEntity<Object> result = itemServicePort.criarItem(itemDTO);
+        assertNotNull(result);
+        assertEquals(HttpStatus.CREATED, result.getStatusCode());
+        assertEquals("Item criado com sucesso", result.getBody());
+    }
+
+    @Test
+    void testAtualizarQuantidadeById() {
+        QuantidadeDTO quantidadeDTO = new QuantidadeDTO();
+        quantidadeDTO.setQuantidade(5.0);
+        doNothing().when(itemServicePort).atualizarQuantidadeById(1L, quantidadeDTO);
+        itemServicePort.atualizarQuantidadeById(1L, quantidadeDTO);
+        verify(itemServicePort, times(1)).atualizarQuantidadeById(1L, quantidadeDTO);
+    }
+
+    @Test
+    void testDeleteById() {
+        doNothing().when(itemServicePort).deleteById(1L);
+        itemServicePort.deleteById(1L);
+        verify(itemServicePort, times(1)).deleteById(1L);
+    }
+
 }

@@ -4,13 +4,13 @@ import com.d3n15.back_hexagonal.dominio.dtos.QuantidadeDTO;
 import com.d3n15.back_hexagonal.dominio.dtos.ItemDTO;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ItemServicePort {
 
     ItemDTO buscarItem(Long id);
 
-    List<ItemDTO> buscarItens();
+    Map<String, Object> buscarItens(int page, int size);
 
     ResponseEntity<Object> criarItem(ItemDTO itemDTO);
 

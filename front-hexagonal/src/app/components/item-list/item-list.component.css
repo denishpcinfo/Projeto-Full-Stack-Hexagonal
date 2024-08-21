@@ -41,3 +41,16 @@ td {
 th {
     background-color: #f2f2f2;
 }
+
+.align-center{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-excluir{
+    margin: 0px 0px 0px 15px;
+}
+
+.align-text-itens{
+    text-align: center;
+}
