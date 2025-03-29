@@ -1,0 +1,6 @@
+nav a.nav-link.active {
+    font-weight: bold;
+    color: #fff !important;
+    text-decoration: underline;
+  }
+  

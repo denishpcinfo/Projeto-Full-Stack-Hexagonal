@@ -22,13 +22,15 @@ export class ItemFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.itemService.getItem(id).subscribe((data) => {
-        this.item = data;
-      });
-    }
-  }
+    this.route.paramMap.subscribe(paramMap => {
+      const id = paramMap.get('id');
+      if (id) {
+        this.itemService.getItem(+id).subscribe(data => {
+          this.item = data;
+        });
+      }
+    });
+  }  
 
   onSubmit(): void {
     if (this.item.id) {

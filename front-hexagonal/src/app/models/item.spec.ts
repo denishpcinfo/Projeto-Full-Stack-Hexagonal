@@ -1,7 +1,7 @@
 import { Item } from './item';
 
 describe('Item', () => {
-  it('should create an instance', () => {
+  it('ao criar uma instância', () => {
     expect(new Item()).toBeTruthy();
   });
 });
