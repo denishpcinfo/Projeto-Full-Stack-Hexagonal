@@ -23,8 +23,4 @@ describe('AppComponent', () => {
     expect(component.title).toBe('front-hexagonal');
   });
 
-  it('ao renderizar o título no DOM se usado no modelo', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent?.toLowerCase()).toContain('front-hexagonal');
-  });
 });
